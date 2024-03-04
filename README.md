@@ -49,3 +49,8 @@ Implement the ***MinStack*** class:
 ## Extra
 
 Run, you fools! No extra spicy stuff this time.
+
+
+## Credits
+
+This exercise has been extracted from the [LeetCode](https://leetcode.com/problems/min-stack) website. Don't hesitate, join and practice in this great community.
