@@ -1,5 +1,8 @@
 package org.tfoc;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * MinStack object will be instantiated and called as such:
  * MinStack obj = new MinStack()
@@ -9,27 +12,30 @@ package org.tfoc;
  * int param_4 = obj.getMin()
  */
 public class MinStack {
+    private record MinValue(int value, int size) {}
 
-    public MinStack() {
+    private final Deque<Integer> values = new LinkedList<>();
+    private final Deque<MinValue> minValues = new LinkedList<>();
 
-    }
-
-    public void push(int val) {
-
+    public void push(int value) {
+        values.push(value);
+        if (minValues.isEmpty() || value < minValues.peek().value) {
+            minValues.push(new MinValue(value, values.size()));
+        }
     }
 
     public void pop() {
-
+        values.pop();
+        if (values.size() < minValues.peek().size) {
+            minValues.pop();
+        }
     }
 
     public int top() {
-
-        return 0;
+        return values.peek();
     }
 
     public int getMin() {
-
-        return 0;
+        return minValues.peek().value;
     }
-
 }
